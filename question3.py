@@ -61,10 +61,7 @@ if __name__ == "__main__":
     N = 2
     
     print(american_call_val(v, K, N)) # Output: 0.165 (3 s.f.)
-    
-    # Note that this is higher than the European call value with same parameters (which gave 0.100).
-    # This makes sense as an American call option gives the holder more freedom, so ought to be more valuable.
-    
+
     v = 0.2
     K = 1.1
     N = 10

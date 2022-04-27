@@ -34,17 +34,16 @@ def euro_call_val(v, K, N):
     """
     
     option_val = 0
-    end_node_val = ((1 + v)**N) - K
-    i = 0
     
-    while end_node_val > 0 and i < N :
+    for i in range(0, N+1):
         
-        option_val += n_choose_r(N, i) * end_node_val
-        i += 1
         end_node_val = ( ((1 + v)**(N - i)) * ((1 - v)**(i)) ) - K
-    
-    if i == N:
-        option_val += end_node_val
+        
+        if end_node_val > 0:
+            option_val += n_choose_r(N, i) * end_node_val
+            
+        else:
+            break
     
     option_val /= 2**N
     
@@ -58,7 +57,7 @@ if __name__ == "__main__":
     K = 0.9
     N = 2
     
-    print(euro_call_val(v, K, N)) # Output: 0.100 (3 s.f.)
+    print(euro_call_val(v, K, N)) # Output: 0.165 (3 s.f.)
 
     v = 0.2
     K = 0
